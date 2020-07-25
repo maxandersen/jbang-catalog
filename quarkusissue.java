@@ -52,7 +52,6 @@ class quarkusissue implements Callable<Integer> {
 
     String run(String... command) {
         try {
-            System.out.println("Exec: " + command[0]);
             return new ProcessExecutor().command(command).readOutput(true).execute().outputUTF8();
         } catch (InterruptedException | TimeoutException | IOException e) {
             return e.getMessage();
