@@ -3,6 +3,14 @@
     "quarkusinfo": {
       "script-ref":   "quarkusissue.java",
       "description":  "Script that collects environment info for Quarkus issue reports"
+    },
+    "jruby": {
+      "script-ref":   "org.jruby:jruby-complete:9.2.12.0",
+      "description":  "Run jruby"
+    },
+    "groovy": {
+      "script-ref":   "org.codehaus.groovy:groovy:3.0.5",
+      "description":  "Run groovy"   
     }
   }
 }
