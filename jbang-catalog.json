@@ -1,16 +1,23 @@
 {
   "aliases": {
     "quarkusinfo": {
-      "script-ref":   "quarkusissue.java",
-      "description":  "Script that collects environment info for Quarkus issue reports"
+      "script-ref": "quarkusissue.java",
+      "description": "Script that collects environment info for Quarkus issue reports"
     },
     "jruby": {
-      "script-ref":   "org.jruby:jruby-complete:9.2.12.0",
-      "description":  "Run jruby"
+      "script-ref": "org.jruby:jruby-complete:9.2.12.0",
+      "description": "Run jruby"
     },
     "groovy": {
-      "script-ref":   "org.codehaus.groovy:groovy:3.0.5",
-      "description":  "Run groovy"   
+      "script-ref": "org.codehaus.groovy:groovy:3.0.5",
+      "description": "Run groovy"
+    },
+    "layrry": {
+      "script-ref": "-d",
+      "arguments": [
+        "Layrry - A Launcher and API for Modularized Java Applications",
+        "layrry.java"
+      ]
     }
   }
 }
