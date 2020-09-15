@@ -13,11 +13,9 @@
       "description": "Run groovy"
     },
     "layrry": {
-      "script-ref": "-d",
-      "arguments": [
-        "Layrry - A Launcher and API for Modularized Java Applications",
-        "layrry.java"
-      ]
+      "script-ref": "layrry.java",
+      "description":
+        "Layrry - A Launcher and API for Modularized Java Applications"
     }
   }
 }

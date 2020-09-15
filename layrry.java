@@ -1,5 +1,5 @@
 //usr/bin/env jbang "$0" "$@" ; exit $?
-//JAVA 15+
+//JAVA 14+
 //REPOS jitpack
 //DEPS com.github.moditect:layrry:master-SNAPSHOT
 
