@@ -1,8 +1,7 @@
 //usr/bin/env jbang "$0" "$@" ; exit $?
 //JAVA 14+
 //REPOS jitpack
-//DEPS com.github.moditect:layrry:master-SNAPSHOT
-
+//DEPS com.github.moditect.layrry:layrry-launcher:master-SNAPSHOT
 import static java.lang.System.*;
 
 public class layrry {
