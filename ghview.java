@@ -50,12 +50,12 @@ class ghview implements Callable<Integer> {
             System.err.println("Could not find git repo in " + dir);
             return ExitCode.USAGE;
         }
-        url = url.replaceFirst("^https://github.com/(.*)/(.*).git$", "https://github.com/$1/$2/");
+        url = url.replaceFirst("^https://github.com/(.*)/(.*).git$", "https://github.com/$1/$2");
 
         for (String res : resource) {
             try {
                 Integer.parseInt(res);
-                java.net.URI uri = new java.net.URI(url + "issues/" + res.replace("#", ""));
+                java.net.URI uri = new java.net.URI(url + "/issues/" + res.replace("#", ""));
 
                     System.err.println("open: " + uri);
 
