@@ -12,10 +12,10 @@
       "script-ref": "org.codehaus.groovy:groovy:3.0.5",
       "description": "Run groovy"
     },
-    "layrry": {
-      "script-ref": "layrry.java",
+    "ghview": {
+      "script-ref": "ghview.java",
       "description":
-        "Layrry - A Launcher and API for Modularized Java Applications"
+        "GitHub View - based on current directory and locate the right 'thing' on github"
     }
   }
 }
