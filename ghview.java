@@ -27,10 +27,6 @@ class ghview implements Callable<Integer> {
     private File dir;
 
     public static void main(String... args) {
-        System.err.println("args:");
-        for (String string : args) {
-            System.err.println(string);
-        }
         int exitCode = new CommandLine(new ghview()).execute(args);
         System.exit(exitCode);
     }
@@ -57,7 +53,7 @@ class ghview implements Callable<Integer> {
                 Integer.parseInt(res);
                 java.net.URI uri = new java.net.URI(url + "/issues/" + res.replace("#", ""));
 
-                    System.err.println("open: " + uri);
+//                    System.err.println("open: " + uri);
 
                 Desktop.getDesktop().browse(uri);
 
