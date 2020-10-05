@@ -14,8 +14,10 @@
     },
     "ghview": {
       "script-ref": "ghview.java",
-      "description":
-        "GitHub View - based on current directory and locate the right 'thing' on github"
+      "description": "GitHub View - based on current directory and locate the right \u0027thing\u0027 on github"
+    },
+    "byteman": {
+      "script-ref": "org.jboss.byteman:byteman:4.0.13"
     }
   }
 }
