@@ -1,4 +1,9 @@
 {
+  "catalogs": {
+    "localmax": {
+      "catalog-ref": "/Users/max/code/personal/maxandersen/jbang-catalog/jbang-catalog.json"
+    }
+  },
   "aliases": {
     "quarkusinfo": {
       "script-ref": "quarkusissue.java",
@@ -18,6 +23,15 @@
     },
     "byteman": {
       "script-ref": "org.jboss.byteman:byteman:4.0.13"
+    }
+  },
+  "templates": {
+    "helloworld": {
+      "file-refs": {
+        "{basename}.java": "template.java.qute",
+        "readme.md": "readme.md.qute"
+      },
+      "description": "maxs first template"
     }
   }
 }
