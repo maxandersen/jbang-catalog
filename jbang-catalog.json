@@ -1,8 +1,6 @@
 {
   "catalogs": {
-    "localmax": {
-      "catalog-ref": "/Users/max/code/personal/maxandersen/jbang-catalog/jbang-catalog.json"
-    }
+   
   },
   "aliases": {
     "quarkusinfo": {
