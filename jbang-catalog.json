@@ -1,7 +1,5 @@
 {
-  "catalogs": {
-   
-  },
+  "catalogs": {},
   "aliases": {
     "quarkusinfo": {
       "script-ref": "quarkusissue.java",
@@ -21,6 +19,9 @@
     },
     "byteman": {
       "script-ref": "org.jboss.byteman:byteman:4.0.13"
+    },
+    "jamira": {
+      "script-ref": "jamira.java"
     }
   },
   "templates": {
