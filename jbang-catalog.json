@@ -22,6 +22,9 @@
     },
     "jamira": {
       "script-ref": "jamira.java"
+    },
+    "dashbuilder": {
+      "script-ref": "dashbuilder/dashbuilder.java"
     }
   },
   "templates": {
