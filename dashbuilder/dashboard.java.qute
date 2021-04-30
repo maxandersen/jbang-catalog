@@ -1,0 +1,50 @@
+//DEPS org.dashbuilder:dashbuilder-dsl:7.53.0.Final
+//DEPS org.slf4j:slf4j-simple:1.7.25
+
+import org.dashbuilder.dataset.ColumnType;
+import org.dashbuilder.dsl.serialization.DashboardExporter;
+import org.dashbuilder.dsl.serialization.DashboardExporter.ExportType;
+
+import static java.util.Arrays.asList;
+import static org.dashbuilder.dataset.DataSetFactory.newDataSetBuilder;
+import static org.dashbuilder.displayer.DisplayerSettingsFactory.newBarChartSettings;
+import static org.dashbuilder.dsl.factory.component.ComponentFactory.displayer;
+import static org.dashbuilder.dsl.factory.dashboard.DashboardFactory.dashboard;
+import static org.dashbuilder.dsl.factory.page.PageFactory.page;
+import static org.dashbuilder.dsl.factory.page.PageFactory.row;
+
+public class {baseName} {
+
+    public static void main(String[] args) {
+        var dataSet = newDataSetBuilder().column("Country", ColumnType.LABEL)
+                                         .column("Population", ColumnType.NUMBER)
+                                         .row("China", "1439323776")
+                                         .row("India", "1380004385")
+                                         .row("United States", "331002651")
+                                         .row("Indonesia", "273523615")
+                                         .row("Pakistan", "220892340")
+                                         .row("Brazil", "212559417")
+                                         .row("Nigeria", "206139589")
+                                         .row("Bangladesh", "164689383")
+                                         .row("Russia", "145934462")
+                                         .row("Mexico", "128932753")
+                                         .buildDataSet();
+
+        var popBarChart = newBarChartSettings().subType_Column()
+                                               .width(800)
+                                               .height(600)
+                                               .dataset(dataSet)
+                                               .column("Country")
+                                               .column("Population")
+                                               .buildSettings();
+        var page = page("Countries Population",
+                        row("<h3> Countries Population</h3>"),
+                        row(displayer(popBarChart)));
+
+        new java.io.File("dashboards").mkdir();
+        DashboardExporter.get().export(dashboard(asList(page)),
+                                       "dashboards/{baseName}.zip",
+                                       ExportType.ZIP);
+    }
+
+}

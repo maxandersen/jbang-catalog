@@ -34,6 +34,11 @@
         "readme.md": "readme.md.qute"
       },
       "description": "maxs first template"
+    },
+    "dashboard": {
+      "file-refs": {
+        "{basename}.java": "dashbuilder/dashboard.java.qute"
+      }
     }
   }
 }
