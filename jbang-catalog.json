@@ -3,6 +3,12 @@
   "aliases": {
     "codegen": {
       "script-ref": "codegen.java"
+    },
+    "parser": {
+      "script-ref": "parser.java"
+    },
+    "diff": {
+      "script-ref": "diff.java"
     }
   }
 }
