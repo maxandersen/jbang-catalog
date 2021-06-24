@@ -3,7 +3,7 @@
 
 import static java.lang.System.*;
 
-public class diff {
+public class difftrial {
 
     public static void main(String... args) throws Exception {
         if (System.getProperty("java.util.logging.SimpleFormatter.format") == null)

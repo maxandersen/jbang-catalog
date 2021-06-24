@@ -4,7 +4,7 @@
 
 import static java.lang.System.*;
 
-public class codegen {
+public class codegentrialjava11 {
 
     public static void main(String... args) throws Exception {
         if (System.getProperty("java.util.logging.SimpleFormatter.format") == null)
