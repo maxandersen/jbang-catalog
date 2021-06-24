@@ -6,22 +6,22 @@
     },
     "codegen-pro": {
       "script-ref": "codegenpro.java"
-    }
+    },
     "codegen-pro-java-8": {
       "script-ref": "codegenprojava8.java"
-    }
+    },
     "codegen-pro-java-11": {
       "script-ref": "codegenprojava11.java"
-    }
+    },
     "codegen-trial": {
       "script-ref": "codegentrial.java"
-    }
+    },
     "codegen-trial-java-8": {
       "script-ref": "codegentrialjava8.java"
-    }
+    },
     "codegen-trial-java-11": {
       "script-ref": "codegentrialjava11.java"
-    }
+    },
     "parser": {
       "script-ref": "parser.java"
     },
@@ -63,6 +63,6 @@
     },
     "diff-trial-java-11": {
       "script-ref": "difftrialjava11.java"
-    },
+    }
   }
 }
