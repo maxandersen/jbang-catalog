@@ -4,11 +4,65 @@
     "codegen": {
       "script-ref": "codegen.java"
     },
+    "codegen-pro": {
+      "script-ref": "codegenpro.java"
+    }
+    "codegen-pro-java-8": {
+      "script-ref": "codegenprojava8.java"
+    }
+    "codegen-pro-java-11": {
+      "script-ref": "codegenprojava11.java"
+    }
+    "codegen-trial": {
+      "script-ref": "codegentrial.java"
+    }
+    "codegen-trial-java-8": {
+      "script-ref": "codegentrialjava8.java"
+    }
+    "codegen-trial-java-11": {
+      "script-ref": "codegentrialjava11.java"
+    }
     "parser": {
       "script-ref": "parser.java"
     },
+    "parser-pro": {
+      "script-ref": "parserpro.java"
+    },
+    "parser-pro-java-8": {
+      "script-ref": "parserprojava8.java"
+    },
+    "parser-pro-java-11": {
+      "script-ref": "parserprojava11.java"
+    },
+    "parser-trial": {
+      "script-ref": "parsertrial.java"
+    },
+    "parser-trial-java-8": {
+      "script-ref": "parsertrialjava8.java"
+    },
+    "parser-trial-java-11": {
+      "script-ref": "parsertrialjava11.java"
+    },
     "diff": {
       "script-ref": "diff.java"
-    }
+    },
+    "diff-pro": {
+      "script-ref": "diffpro.java"
+    },
+    "diff-pro-java-8": {
+      "script-ref": "diffprojava8.java"
+    },
+    "diff-pro-java-11": {
+      "script-ref": "diffprojava11.java"
+    },
+    "diff-trial": {
+      "script-ref": "difftrial.java"
+    },
+    "diff-trial-java-8": {
+      "script-ref": "difftrialjava8.java"
+    },
+    "diff-trial-java-11": {
+      "script-ref": "difftrialjava11.java"
+    },
   }
 }
