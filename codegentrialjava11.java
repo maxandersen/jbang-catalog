@@ -1,6 +1,6 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS org.jooq.trial-java-11:jooq-codegen:${jooq.version:RELEASE}
-//DEPS org.jooq.trial-java-11:jooq-meta-extensions:${jooq.version:RELEASE}
+//DEPS org.jooq.trial-java-11:jooq-codegen:${jooq.version:LATEST}
+//DEPS org.jooq.trial-java-11:jooq-meta-extensions:${jooq.version:LATEST}
 
 import static java.lang.System.*;
 

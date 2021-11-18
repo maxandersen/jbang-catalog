@@ -1,5 +1,5 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS org.jooq.pro:jooq:${jooq.version:RELEASE}
+//DEPS org.jooq.pro:jooq:${jooq.version:LATEST}
 
 import static java.lang.System.*;
 
