@@ -25,6 +25,9 @@
     },
     "dashbuilder": {
       "script-ref": "dashbuilder/dashbuilder.java"
+    },
+    "prelude": {
+      "script-ref": "prelude.jsh"
     }
   },
   "templates": {
