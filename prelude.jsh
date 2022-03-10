@@ -20,15 +20,42 @@ class Line {
 
     public String s(int n) {
         if (n == 0) return line;
-        return fields[n-1];
+        if (n > 0)
+            return fields[n-1];
+        else
+            return fields[nf+n];
+    }
+
+    public int s(int n, String def) {
+        try {
+            return s(n);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return def;
+        }
     }
 
     public int i(int n) {
         return Integer.parseInt(s(n));
     }
 
+    public int i(int n, int def) {
+        try {
+            return i(n);
+        } catch (NumberFormatException|ArrayIndexOutOfBoundsException e) {
+            return def;
+        }
+    }
+
     public double d(int n) {
         return Double.parseDouble(s(n));
+    }
+
+    public double d(int n, double def) {
+        try {
+            return d(n);
+        } catch (NumberFormatException|ArrayIndexOutOfBoundsException e) {
+            return def;
+        }
     }
 
     public String toString() { return line; }
