@@ -28,6 +28,9 @@
     },
     "prelude": {
       "script-ref": "prelude.jsh"
+    },
+    "jackson": {
+      "script-ref": "jackson.jsh"
     }
   },
   "templates": {
