@@ -5,14 +5,17 @@
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
-import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
@@ -31,36 +34,41 @@ class ghview implements Callable<Integer> {
         System.exit(exitCode);
     }
 
+    String getBaseUrl(String repo) throws IOException {
+
+        if(repo==null) {
+            FileRepositoryBuilder builder = new FileRepositoryBuilder();
+            Repository repository = builder.setWorkTree(dir).readEnvironment() // scan environment GIT_* variables
+                    .findGitDir() // scan up the file system tree
+                    // .setMustExist(true)
+                    .build();
+
+            String url = repository.getConfig().getString("remote", "origin", "url");
+
+            url = url.replaceFirst("^https://github.com/(.*)/(.*).git$", "https://github.com/$1/$2");
+            return url;
+        } else {
+            return "https://github.com/" + repo;
+        }
+    }
     @Override
     public Integer call() throws Exception { // your business logic goes here...
-
-        FileRepositoryBuilder builder = new FileRepositoryBuilder();
-        Repository repository = builder.setWorkTree(dir).readEnvironment() // scan environment GIT_* variables
-                .findGitDir() // scan up the file system tree
-                // .setMustExist(true)
-                .build();
-
-        String url = repository.getConfig().getString("remote", "origin", "url");
-
-        if(url==null) {
-            System.err.println("Could not find git repo in " + dir);
-            return ExitCode.USAGE;
-        }
-        url = url.replaceFirst("^https://github.com/(.*)/(.*).git$", "https://github.com/$1/$2");
+       // System.out.println("opening " + resource);
 
         for (String res : resource) {
-            try {
-                Integer.parseInt(res);
-                java.net.URI uri = new java.net.URI(url + "/issues/" + res.replace("#", ""));
 
-//                    System.err.println("open: " + uri);
+            Pattern p = Pattern.compile("(?<repo>[a-z0-9A-Z_.-]+/[a-z0-9A-Z_.-]+)?(?<issue>\\\\?#[0-9]+)");
 
+            Matcher m = p.matcher(res);
+
+            if(m.find()) {
+                String url = getBaseUrl(m.group("repo"));
+                if(m.group("issue")!=null) {
+                    url = url + "/issues/" + m.group("issue").replace("#", "").replace("\\","");
+                }
+                URI uri = new URI(url);
                 Desktop.getDesktop().browse(uri);
-
-            } catch (NumberFormatException nfe) {
-                // bad number skip
             }
-
         }
         return 0;
     }
