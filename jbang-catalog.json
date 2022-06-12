@@ -63,6 +63,10 @@
     },
     "diff-trial-java-11": {
       "script-ref": "difftrialjava11.java"
+    },
+    "jooxsh": {
+      "script-ref": "joox.jsh"
     }
-  }
+  },
+  "templates": {}
 }
