@@ -33,10 +33,7 @@
       "script-ref": "jackson.jsh"
     },
     "ap-loader": {
-      "script-ref": "me.bechberger:ap-loader-all:LATEST",
-      "arguments": [
-        "version"
-      ]
+      "script-ref": "https://github.com/jvm-profiling-tools/ap-loader/releases/latest/download/ap-loader-all.jar"
     }
   },
   "templates": {
