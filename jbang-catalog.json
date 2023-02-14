@@ -31,6 +31,12 @@
     },
     "jackson": {
       "script-ref": "jackson.jsh"
+    },
+    "ap-loader": {
+      "script-ref": "me.bechberger:ap-loader-all:LATEST",
+      "arguments": [
+        "version"
+      ]
     }
   },
   "templates": {
