@@ -42,6 +42,13 @@
         "org.openjfx:javafx-media:18.0.2:${os.detected.jfxname}"
       ],
       "java": "17"
+    },
+    "sqlsh": {
+      "script-ref": "org.apache.calcite:calcite-plus:RELEASE",
+      "dependencies": [
+        "org.slf4j:slf4j-simple:RELEASE"
+      ],
+      "main": "org.apache.calcite.adapter.os.SqlShell"
     }
   },
   "templates": {
