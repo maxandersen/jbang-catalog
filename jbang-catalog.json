@@ -49,6 +49,10 @@
         "org.slf4j:slf4j-simple:RELEASE"
       ],
       "main": "org.apache.calcite.adapter.os.SqlShell"
+    },
+    "quarkus-explain": {
+      "script-ref": "explain/explain.java",
+      "java-agents": []
     }
   },
   "templates": {
