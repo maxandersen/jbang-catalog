@@ -15,9 +15,11 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
@@ -31,16 +33,16 @@ import picocli.CommandLine.Option;
 @CommandLine.Command
 public class explain implements Runnable {
 
-    @CommandLine.Parameters(index = "0", description = "The source file to explain")
-    Path sourceFile;
+    @CommandLine.Parameters(index = "0", arity="1..N", description = "The source file to explain")
+    Set<Path> sourceFiles;
 
-	@Option(names = { "-t", "--token" }, description = "The OpenAI API token", required = true, defaultValue = "${OPENAI_API_KEY}")
+	@Option(names = { "-t", "--token" }, description = "The OpenAI API token", required = true, defaultValue = "${OPENAI_API_KEY}", hidden=true)
 	String token;
 
-	@Option(names = { "-m", "--model" }, description = "The OpenAI model to use", required = true, defaultValue = "gpt-3.5-turbo")
+	@Option(names = { "-m", "--model" }, description = "The OpenAI model to use", required = true, defaultValue = "gpt-3.5-turbo", hidden=true)
 	String model;
 
-	@Option(names = { "-T", "--temperature" }, description = "The temperature to use", required = true, defaultValue = "0.8")
+	@Option(names = { "-T", "--temperature" }, description = "The temperature to use", required = true, defaultValue = "0.8", hidden=true)
 	double temperature;
 
 	//@RestClient
@@ -48,6 +50,9 @@ public class explain implements Runnable {
 
     @Override
     public void run() {
+
+		//working around CR1 bug with passing arguments
+		Path sourceFile = sourceFiles.iterator().next();
 
 		System.out.println("Requesting explanation of " + sourceFile + " with model " + model + " and temperature " + temperature + ". Have patience...");
 
@@ -73,8 +78,9 @@ public class explain implements Runnable {
 		return m;
 	}
 
-	//public static void main(String[] args) {
-	//	Quarkus.run();
-	//}
+	/*public static void main(String[] args) {
+		System.out.println(Arrays.toString(args));
+		Quarkus.run(args);
+	}*/
 }
 
