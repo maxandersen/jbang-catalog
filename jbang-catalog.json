@@ -53,6 +53,11 @@
     "quarkus-explain": {
       "script-ref": "explain/explain.java",
       "java-agents": []
+    },
+    "shellscript": {
+      "script-ref": "shellscripts/shellscript.java",
+      "description": "Simple example of how to wrap and run a shellscript using jbang catalogs.",
+      "java-agents": []
     }
   },
   "templates": {
