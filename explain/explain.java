@@ -19,30 +19,41 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-import io.quarkus.runtime.Quarkus;
-import jakarta.inject.Inject;
-import picocli.CommandLine;
+import picocli.CommandLine.*;
 import picocli.CommandLine.Option;
 
-@CommandLine.Command
+@Command(
+	mixinStandardHelpOptions = true, headerHeading = "@|bold,underline Usage|@:%n%n",
+	version = "0.1",
+synopsisHeading = "%n",
+descriptionHeading = "%n@|bold,underline Description|@:%n%n",
+parameterListHeading = "%n@|bold,underline Parameters|@:%n",
+optionListHeading = "%n@|bold,underline Options|@:%n",
+header = "Explain usage of a source file using ChatGPT.",
+description = "Queries ChatGPT to explain what a source file does in a Quarkus project.\n\n"+
+"Note: Be aware the source code is sent to remote server.")
 public class explain implements Runnable {
 
-    @CommandLine.Parameters(index = "0", arity="1..N", description = "The source file to explain")
-    Set<Path> sourceFiles;
+    @Parameters(index = "0", arity="1", description = "The source file to explain")
+    Path sourceFile;
 
-	@Option(names = { "-t", "--token" }, description = "The OpenAI API token", required = true, defaultValue = "${OPENAI_API_KEY}", hidden=true)
+	@Option(names = { "-t", "--token" }, description = "The OpenAI API token. default: OPENAI_API_KEY", required = true, defaultValue = "${OPENAI_API_KEY}")
 	String token;
 
-	@Option(names = { "-m", "--model" }, description = "The OpenAI model to use", required = true, defaultValue = "gpt-3.5-turbo", hidden=true)
+	@Option(names = { "-m", "--model" }, 
+			description = "The OpenAI model to use. Valid values: ${COMPLETION-CANDIDATES}", 
+			required = true, 
+			defaultValue = "gpt-3.5-turbo",
+			completionCandidates = ModelCandidates.class)
 	String model;
 
-	@Option(names = { "-T", "--temperature" }, description = "The temperature to use", required = true, defaultValue = "0.8", hidden=true)
+	@Option(names = { "-T", "--temperature" }, 
+			description = "The temperature to use. Number between 0 and 1. 0=no variation 1=very creative/random.", 
+			required = true, defaultValue = "0.8")
 	double temperature;
 
 	//@RestClient
@@ -50,9 +61,6 @@ public class explain implements Runnable {
 
     @Override
     public void run() {
-
-		//working around CR1 bug with passing arguments
-		Path sourceFile = sourceFiles.iterator().next();
 
 		System.out.println("Requesting explanation of " + sourceFile + " with model " + model + " and temperature " + temperature + ". Have patience...");
 
@@ -78,9 +86,8 @@ public class explain implements Runnable {
 		return m;
 	}
 
-	/*public static void main(String[] args) {
-		System.out.println(Arrays.toString(args));
-		Quarkus.run(args);
-	}*/
+	static class ModelCandidates extends ArrayList<String> {
+		ModelCandidates() { super(Arrays.asList("gpt-3.5-turbo", "gpt-4")); }
+	}
 }
 
