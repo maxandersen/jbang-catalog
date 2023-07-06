@@ -58,6 +58,11 @@
       "script-ref": "shellscripts/shellscript.java",
       "description": "Simple example of how to wrap and run a shellscript using jbang catalogs.",
       "java-agents": []
+    },
+    "quack": {
+      "script-ref": "quack.jsh",
+      "enable-preview": false,
+      "java-agents": []
     }
   },
   "templates": {
