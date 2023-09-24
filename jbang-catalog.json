@@ -73,6 +73,13 @@
       },
       "description": "maxs first template"
     },
+    "gcal": {
+      "file-refs": {
+        "{basename}.java": "gcal.java.qute",
+        "readme.md": "gcal-readme.md.qute"
+      },
+      "description": "Google Calendar API Template"
+    },
     "dashboard": {
       "file-refs": {
         "{basename}.java": "dashbuilder/dashboard.java.qute"

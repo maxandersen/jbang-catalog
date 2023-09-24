@@ -1,0 +1,14 @@
+# JBang Google Calendar Template
+
+This is a basic template for JBang that shows how to use the Google Calendar API.
+
+Default it takes your primary calendar and print the upcoming events and their attendees.
+
+## Setup
+
+To use google calendar API you need a `credentials.json` file. To get this file:
+
+1. Create a new project in the [Google Developer Console](https://console.developers.google.com/).
+2. Enable the Google Calendar API for the project.
+3. Download the `.json` file from credentials and save as `credentials.json`
+

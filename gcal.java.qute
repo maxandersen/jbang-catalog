@@ -1,0 +1,138 @@
+///usr/bin/env jbang "$0" "$@" ; exit $?
+//JAVA 17+
+//DEPS info.picocli:picocli:4.5.0
+//DEPS com.google.api-client:google-api-client:1.23.0
+//DEPS com.google.oauth-client:google-oauth-client-jetty:1.23.0
+//DEPS com.google.apis:google-api-services-calendar:v3-rev305-1.23.0
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.Callable;
+
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.DateTime;
+import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.api.services.calendar.Calendar;
+import com.google.api.services.calendar.CalendarScopes;
+import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.Events;
+
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.ExitCode;
+import picocli.CommandLine.Option;
+
+@Command(name = "{baseName}", mixinStandardHelpOptions = true, version = "{baseName} 0.1", description = "interact with google calendar with jbang")
+class {baseName} implements Callable<Integer> {
+
+    @Option(names = { "--credentials" }, defaultValue = "credentials.json", description = "path to credentials")
+    private File credentials;
+
+    @Option(names = { "-c" }, defaultValue = "primary", description = "which calendar to use")
+    private String calendar;
+
+    public static void main(String... args) {
+        int exitCode = new CommandLine(new {baseName}()).execute(args);
+        System.exit(exitCode);
+    }
+
+    private static final String APPLICATION_NAME = "{baseName}";
+    private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    private static final String TOKENS_DIRECTORY_PATH = "tokens";
+
+    /**
+     * Global instance of the scopes required by this quickstart.
+     * If modifying these scopes, delete your previously saved tokens/ folder.
+     */
+    private static final List<String> SCOPES = Collections.singletonList(CalendarScopes.CALENDAR);
+
+    private Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+        // Load client secrets.
+        var in = new FileInputStream(credentials);
+
+        var clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+
+        // Build flow and trigger user authorization request.
+        var flow = new GoogleAuthorizationCodeFlow.Builder(
+                HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
+                .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
+                .setAccessType("offline")
+                .build();
+        var receiver = new LocalServerReceiver.Builder().setPort(8765).build();
+        return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+    }
+
+    public Integer call() throws Exception {
+        Calendar service = null;
+        try {
+            // Build a new authorized API client service.
+            final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+            service = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                    .setApplicationName(APPLICATION_NAME)
+                    .build();
+        } catch (FileNotFoundException fe) {
+            System.err.println(fe);
+            System.err.println(
+                    """
+                    You are missing credentials for accessing Google API's.
+                    Do the following:
+                        1. Go to https://developers.google.com/calendar/quickstart/java
+                        2. click 'Enable the Google Calendar API' 
+                        3. Download credentials.json and put it in current working directory.
+                        4. run {baseName} again
+                    """);
+            return ExitCode.USAGE;
+        }
+
+        // Fetch the current date
+        DateTime now = new DateTime(System.currentTimeMillis());
+
+        // List the next 10 events from the primary calendar.
+        Events events = service.events().list("primary")
+                .setMaxResults(10)
+                .setTimeMin(now)
+                .setOrderBy("startTime")
+                .setSingleEvents(true)
+                .execute();
+        List<Event> items = events.getItems();
+
+        if (items.isEmpty()) {
+            System.out.println("No upcoming events found.");
+        } else {
+            System.out.println("Upcoming events:");
+            for (var event : items) {
+                DateTime start = event.getStart().getDateTime();
+                if (start == null) {
+                    start = event.getStart().getDate();
+                }
+                System.out.printf("%s (%s)\n", event.getSummary(), start);
+
+                // Print the description and attendees of the event
+                System.out.println("Description: " + event.getDescription());
+                if (event.getAttendees() != null) {
+                    System.out.println("Attendees: ");
+                    for (var attendee : event.getAttendees()) {
+                        System.out.println(attendee.getEmail());
+                    }
+                }
+            }
+        }
+
+        return 0;
+    }
+
+}
