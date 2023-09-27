@@ -63,6 +63,21 @@
       "script-ref": "quack.jsh",
       "enable-preview": false,
       "java-agents": []
+    },
+    "gython": {
+      "script-ref": "org.vafer:helloworld:1.0",
+      "arguments": [
+        "--python.PosixModuleBackend\u003djava"
+      ],
+      "dependencies": [
+        "org.graalvm.python:python-language:23.1.0",
+        "org.graalvm.python:python-launcher:23.1.0",
+        "org.graalvm.truffle:truffle-nfi-libffi:23.1.0"
+      ],
+      "java": "21",
+      "main": "com.oracle.graal.python.shell.GraalPythonMain",
+      "enable-preview": false,
+      "java-agents": []
     }
   },
   "templates": {
