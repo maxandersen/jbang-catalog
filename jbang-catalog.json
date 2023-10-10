@@ -78,6 +78,11 @@
       "main": "com.oracle.graal.python.shell.GraalPythonMain",
       "enable-preview": false,
       "java-agents": []
+    },
+    "qrcode": {
+      "script-ref": "QrCode.java",
+      "enable-preview": false,
+      "java-agents": []
     }
   },
   "templates": {
