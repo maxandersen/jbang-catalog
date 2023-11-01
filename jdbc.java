@@ -28,7 +28,7 @@ class jdbc implements Callable<Integer> {
     boolean quiet;
 
     @Parameters(index = "1..N", description = "Additional args to pass to sqlline")
-    List<String> additionalArgs;
+    List<String> additionalArgs = List.of();
 
     public static void main(String... args) {
         int exitCode = new CommandLine(new jdbc()).execute(args);
@@ -41,11 +41,10 @@ class jdbc implements Callable<Integer> {
         
         String driverDependency;
         URI jdbcuri = null;
-        if(jdbcurl.startsWith("jdbc:")) {
-            jdbcuri = URI.create(jdbcurl.substring("jdbc:".length()));
-        } else {
-            jdbcuri = URI.create(jdbcurl);
-        }
+        if(!jdbcurl.startsWith("jdbc:")) {
+            jdbcurl = "jdbc:" + jdbcurl;
+        }  
+        jdbcuri = URI.create(jdbcurl.substring("jdbc:".length()));
 
         String scheme = jdbcuri.getScheme();
 
@@ -103,7 +102,7 @@ class jdbc implements Callable<Integer> {
         //https://hsqldb.org/doc/2.0/guide/dbproperties-chapt.html
         drivers.put("hsqldb", "org.hsqldb:hsqldb:RELEASE");
         //https://www.h2database.com/html/features.html#database_url
-        drivers.put("h2", "com.h2datbase:h2:RELEASE");
+        drivers.put("h2", "com.h2database:h2:RELEASE");
         //https://db.apache.org/derby/docs/10.8/devguide/cdevdvlp17453.html
         drivers.put("derby", "org.apache.derby:derby:RELEASE");
         return drivers;
