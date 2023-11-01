@@ -111,6 +111,7 @@ class jdbc implements Callable<Integer> {
         drivers.put("h2", "com.h2database:h2:RELEASE");
         //https://db.apache.org/derby/docs/10.8/devguide/cdevdvlp17453.html
         drivers.put("derby", "org.apache.derby:derby:RELEASE");
+        drivers.put("sqlite", "org.xerial:sqlite-jdbc:RELEASE");
         return drivers;
     }
 }
