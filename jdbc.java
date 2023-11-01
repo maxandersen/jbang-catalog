@@ -59,7 +59,12 @@ class jdbc implements Callable<Integer> {
     
         List<String> command = new ArrayList<>();
 
-        command.add("jbang");
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("win")) {
+            command.add("jbang.cmd");
+        } else {
+            command.add("jbang");
+        }
         command.add("--deps");
         command.add(driverDependency);
         command.add("sqlline:sqlline:RELEASE");
