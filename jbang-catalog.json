@@ -83,6 +83,11 @@
       "script-ref": "QrCode.java",
       "enable-preview": false,
       "java-agents": []
+    },
+    "jdbc": {
+      "script-ref": "jdbc.java",
+      "enable-preview": false,
+      "java-agents": []
     }
   },
   "templates": {
