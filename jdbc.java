@@ -1,6 +1,7 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //DEPS info.picocli:picocli:4.6.3
-
+//DESC This script launches sqlline by just specifying jdbc url.
+//DESC `jdbc` will use jbang to download the required driver and launch sqlline.
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
