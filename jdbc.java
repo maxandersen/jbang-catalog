@@ -40,7 +40,7 @@ class jdbc implements Callable<Integer> {
     @Override
     public Integer call() throws Exception { // your business logic goes here...
         
-        String driverDependency;
+        List<String> driverDependency;
         URI jdbcuri = null;
         if(!jdbcurl.startsWith("jdbc:")) {
             jdbcurl = "jdbc:" + jdbcurl;
@@ -49,7 +49,7 @@ class jdbc implements Callable<Integer> {
 
         String scheme = jdbcuri.getScheme();
 
-        Map<String, String> drivers = setupDrivers();
+        Map<String, List<String>> drivers = setupDrivers();
 
         driverDependency = drivers.get(scheme);
         if (driverDependency == null) {
@@ -66,7 +66,7 @@ class jdbc implements Callable<Integer> {
             command.add("jbang");
         }
         command.add("--deps");
-        command.add(driverDependency);
+        command.add(String.join(",",driverDependency));
         command.add("sqlline:sqlline:RELEASE");
         command.add("-u");
         command.add(jdbcurl);
@@ -86,32 +86,32 @@ class jdbc implements Callable<Integer> {
     }
 
 
-    private Map<String, String> setupDrivers() {
-        Map<String, String> drivers = new HashMap<>();
+    private Map<String, List<String>> setupDrivers() {
+        Map<String, List<String>> drivers = new HashMap<>();
         //https://mariadb.com/kb/en/mariadb-connector-j/
-        drivers.put("mariadb", "org.mariadb.jdbc:mariadb-java-client:RELEASE");
+        drivers.put("mariadb", List.of("org.mariadb.jdbc:mariadb-java-client:RELEASE"));
         //https://dev.mysql.com/doc/connector-j/8.0/en/
-        drivers.put("mysql", "mysql:mysql-connector-java:RELEASE");
+        drivers.put("mysql", List.of("mysql:mysql-connector-java:RELEASE"));
         //https://jdbc.postgresql.org/documentation/head/connect.html
-        drivers.put("postgresql", "org.postgresql:postgresql:RELEASE");
+        drivers.put("postgresql", List.of("org.postgresql:postgresql:RELEASE"));
         //https://docs.oracle.com/en/database/oracle/oracle-database/19/jjdbc/JDBC-driver-connection-url-syntax.html#GUID-0A7E1701-2CEC-4608-A498-2D72AEB4013B
-        drivers.put("oracle", "com.oracle.database.jdbc:ojdbc10:RELEASE");
+        drivers.put("oracle", List.of("com.oracle.database.jdbc:ojdbc10:RELEASE"));
         //https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-ver15
-        drivers.put("sqlserver", "com.microsoft.sqlserver:mssql-jdbc:RELEASE");
+        drivers.put("sqlserver", List.of("com.microsoft.sqlserver:mssql-jdbc:RELEASE"));
         //https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/109397c2206a4ab2a5386d494f4cf75e.html
-        drivers.put("sap", "com.sapcloud.db.jdbc:ngdbc:RELEASE");
+        drivers.put("sap", List.of("com.sapcloud.db.jdbc:ngdbc:RELEASE"));
         //https://www.ibm.com/docs/en/informix-servers/14.10?topic=SSGU8G_14.1.0/com.ibm.jdbc_pg.doc/ids_jdbc_501.htm
-        drivers.put("informix", "com.ibm.informix:jdbc:RELEASE");
+        drivers.put("informix", List.of("com.ibm.informix:jdbc:RELEASE"));
         //https://www.firebirdsql.org/file/documentation/drivers_documentation/java/3.0.7/firebird-classic-server.html
-        drivers.put("firebird", "org.firebirdsql.jdbc:jaybird:RELEASE");
-        drivers.put("firebirdsql", "org.firebirdsql.jdbc:jaybird:RELEASE");
+        drivers.put("firebird", List.of("org.firebirdsql.jdbc:jaybird:RELEASE"));
+        drivers.put("firebirdsql", List.of("org.firebirdsql.jdbc:jaybird:RELEASE"));
         //https://hsqldb.org/doc/2.0/guide/dbproperties-chapt.html
-        drivers.put("hsqldb", "org.hsqldb:hsqldb:RELEASE");
+        drivers.put("hsqldb", List.of("org.hsqldb:hsqldb:RELEASE"));
         //https://www.h2database.com/html/features.html#database_url
-        drivers.put("h2", "com.h2database:h2:RELEASE");
+        drivers.put("h2", List.of("com.h2database:h2:RELEASE"));
         //https://db.apache.org/derby/docs/10.8/devguide/cdevdvlp17453.html
-        drivers.put("derby", "org.apache.derby:derby:RELEASE");
-        drivers.put("sqlite", "org.xerial:sqlite-jdbc:RELEASE");
+        drivers.put("derby", List.of("org.apache.derby:derby:RELEASE"));
+        drivers.put("sqlite", List.of("org.xerial:sqlite-jdbc:RELEASE", "org.slf4j:slf4j-simple:1.7.36"));
         return drivers;
     }
 }
