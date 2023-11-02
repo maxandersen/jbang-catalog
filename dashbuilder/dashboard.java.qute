@@ -1,5 +1,5 @@
 //DEPS org.dashbuilder:dashbuilder-dsl:7.53.0.Final
-//DEPS org.slf4j:slf4j-simple:1.7.25
+//DEPS org.slf4j:slf4j-simple:1.7.36
 
 import org.dashbuilder.dataset.ColumnType;
 import org.dashbuilder.dsl.serialization.DashboardExporter;
