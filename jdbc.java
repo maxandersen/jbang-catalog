@@ -76,11 +76,17 @@ class jdbc implements Callable<Integer> {
         }
 
         System.out.println(String.join(" ", command));
-        if(!quiet) {
+        if (!quiet) {
             ProcessBuilder processBuilder = new ProcessBuilder(command);
-            processBuilder.inheritIO();
+            processBuilder.redirectInput(ProcessBuilder.Redirect.INHERIT);
+            processBuilder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
             Process process = processBuilder.start();
-            process.waitFor();
+            try {
+                process.waitFor();
+            } catch (InterruptedException e) {
+                System.out.println("Subprocess was interrupted, cleaning up...");
+                process.destroy();
+            }
         }
         return 0;
     }
@@ -112,6 +118,7 @@ class jdbc implements Callable<Integer> {
         //https://db.apache.org/derby/docs/10.8/devguide/cdevdvlp17453.html
         drivers.put("derby", List.of("org.apache.derby:derby:RELEASE"));
         drivers.put("sqlite", List.of("org.xerial:sqlite-jdbc:RELEASE", "org.slf4j:slf4j-simple:1.7.36"));
+        drivers.put("drill", List.of("org.apache.drill.exec:drill-jdbc:RELEASE,org.slf4j:slf4j-simple:1.7.36"));
         return drivers;
     }
 }

@@ -88,6 +88,11 @@
       "script-ref": "jdbc.java",
       "enable-preview": false,
       "java-agents": []
+    },
+    "jnotebook": {
+      "script-ref": "tech.catheu:jnotebook-distribution:0.12.0",
+      "java": "17+",
+      "java-agents": []
     }
   },
   "templates": {
