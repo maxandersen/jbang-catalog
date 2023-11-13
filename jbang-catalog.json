@@ -93,6 +93,15 @@
       "script-ref": "tech.catheu:jnotebook-distribution:0.12.0",
       "java": "17+",
       "java-agents": []
+    },
+    "rapaio-jupyter-kernel": {
+      "script-ref": "io.github.padreati:rapaio-jupyter-kernel:RELEASE",
+      "java": "21",
+      "java-agents": []
+    },
+    "install-java-jupyter": {
+      "script-ref": "javajupyter.java",
+      "java-agents": []
     }
   },
   "templates": {
