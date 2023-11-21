@@ -171,7 +171,7 @@ class QuarkusEdit implements Callable<Integer> {
                 "--install-extension", "vscjava.vscode-java-test",
                 "--install-extension", "vscjava.vscode-java-dependency",
                 "--install-extension", "jbangdev.jbang-vscode",
-                "--install-extensions", "redhat.vscode-quarkus");
+                "--install-extension", "redhat.vscode-quarkus");
 
         pb.inheritIO();
         Process process = pb.start();
