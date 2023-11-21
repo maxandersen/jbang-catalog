@@ -164,7 +164,7 @@ class QuarkusEdit implements Callable<Integer> {
             Util.writeString(settingsjson, vscodeSettings);
         }
 
-        verboseMsg("Installing Java extensions...");
+        verboseMsg("Installing Java + Quarkus extensions...");
         ProcessBuilder pb = new ProcessBuilder(editorBinPath.toAbsolutePath().toString(),
                 "--install-extension", "redhat.java",
                 "--install-extension", "vscjava.vscode-java-debug",
