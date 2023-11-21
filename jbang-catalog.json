@@ -89,18 +89,9 @@
       "enable-preview": false,
       "java-agents": []
     },
-    "jnotebook": {
-      "script-ref": "tech.catheu:jnotebook-distribution:0.12.0",
-      "java": "17+",
-      "java-agents": []
-    },
-    "rapaio-jupyter-kernel": {
-      "script-ref": "io.github.padreati:rapaio-jupyter-kernel:RELEASE",
-      "java": "21",
-      "java-agents": []
-    },
-    "install-java-jupyter": {
-      "script-ref": "javajupyter.java",
+    "quarkus-edit": {
+      "script-ref": "QuarkusEdit.java",
+      "enable-preview": false,
       "java-agents": []
     }
   },
