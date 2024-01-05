@@ -93,6 +93,10 @@
       "script-ref": "QuarkusEdit.java",
       "enable-preview": false,
       "java-agents": []
+    },
+    "hass-qli-early-access": {
+      "script-ref": "https://github.com/maxandersen/home-assistant-qli/releases/download/early-access/hass-qli-early-access.jar",
+      "java-agents": []
     }
   },
   "templates": {
