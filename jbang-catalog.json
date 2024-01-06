@@ -96,6 +96,7 @@
     },
     "hass-qli-early-access": {
       "script-ref": "https://github.com/maxandersen/home-assistant-qli/releases/download/early-access/hass-qli-early-access.jar",
+      "java": "21+",
       "java-agents": []
     }
   },
