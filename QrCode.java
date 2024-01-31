@@ -1,6 +1,6 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 
-//DEPS com.google.zxing:core:3.4.0
+//DEPS com.google.zxing:core:3.5.3
 //DEPS com.google.zxing:javase:3.4.0
 
 import com.google.zxing.BarcodeFormat;
