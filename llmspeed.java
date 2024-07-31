@@ -55,7 +55,7 @@ public class llmspeed implements Runnable {
             Map<String, Object> responseData = sendRequest();
             double speed = calculateSpeed(responseData);
             
-            System.out.println("url: " + baseUrl);
+            //System.out.println("url: " + baseUrl); // dont leak possible open url endpoint
             System.out.println("model: " + model);
             System.out.println("tokens_per_second: " + speed);
 
