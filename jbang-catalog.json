@@ -111,6 +111,10 @@
       "script-ref": "llmspeed.java",
       "description": "Calculate the speed of a Large Language Model using OpenAI model. The speed is measured in tokens per second based on the models own reported data.",
       "java-agents": []
+    },
+    "j2xgenie": {
+      "script-ref": "j2xgenie/j2xgenie.java",
+      "java-agents": []
     }
   },
   "templates": {
