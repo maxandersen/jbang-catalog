@@ -115,6 +115,10 @@
     "j2xgenie": {
       "script-ref": "j2xgenie/j2xgenie.java",
       "java-agents": []
+    },
+    "imgcat": {
+      "script-ref": "imgcat/imgcat.java",
+      "java-agents": []
     }
   },
   "templates": {
