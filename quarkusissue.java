@@ -1,5 +1,5 @@
 //usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS info.picocli:picocli:4.2.0
+//DEPS info.picocli:picocli:4.7.6
 //DEPS de.vandermeer:asciitable:0.3.2
 //DEPS org.jline:jline:3.16.0
 //DEPS org.zeroturnaround:zt-exec:1.11
