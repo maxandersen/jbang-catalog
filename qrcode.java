@@ -77,7 +77,7 @@ class ColorConverter implements ITypeConverter<Color> {
 }
 
 @Command(name = "qrcode", mixinStandardHelpOptions = true, version = "qrcode 0.1", description = "Make a QR code with an overlay image. Inspired by https://hollycummins.com/creating-QR-codes/")
-public class main implements Callable<Integer> {
+class main implements Callable<Integer> {
 
     @Parameters(index = "0", description = "Text to encode", defaultValue = "http://placekitten.com/g/1024/1024")
     String text;

@@ -80,7 +80,7 @@
       "java-agents": []
     },
     "qrcode": {
-      "script-ref": "QrCode.java",
+      "script-ref": "qrcode.java",
       "enable-preview": false,
       "java-agents": []
     },
