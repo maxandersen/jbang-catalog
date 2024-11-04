@@ -1,7 +1,7 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //DEPS info.picocli:picocli:4.6.3
-//DESC This script launches sqlline by just specifying jdbc url.
-//DESC `jdbc` will use jbang to download the required driver and launch sqlline.
+//DESC This script launches sqlline or h2 console by just specifying jdbc url.
+//DESC `jdbc` will use jbang to download the required driver and launch sqlline or h2 console.
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
@@ -19,7 +19,7 @@ import java.util.concurrent.Callable;
 // maven drivers: https://vladmihalcea.com/jdbc-driver-maven-dependency/
 
 @Command(name = "jdbc", mixinStandardHelpOptions = true, version = "jdbc 0.1",
-        description = "Launch command to connect a jdbc database using sqlline\n\nExample:\njdbc jdbc:oracle:thin:@myoracle.db.server:1521:my_sid -- -n max\n")
+        description = "Launch command to connect a jdbc database using sqlline or h2 web console\n\nExample:\njdbc jdbc:oracle:thin:@myoracle.db.server:1521:my_sid -- -n max\n")
 class jdbc implements Callable<Integer> {
 
     @Parameters(index = "0", description = "JDBC url to connect to")
@@ -28,8 +28,11 @@ class jdbc implements Callable<Integer> {
     @Option(names = "-q", description = "Quiet/no launch. Just print command line")
     boolean quiet;
 
-    @Parameters(index = "1..N", description = "Additional args to pass to sqlline")
+    @Parameters(index = "1..N", description = "Additional args to pass to sqlline or h2 web console")
     List<String> additionalArgs = List.of();
+
+    @Option(names = "-w", description = "Launch h2 web console instead of sqlline")
+    boolean web;
 
     public static void main(String... args) {
         int exitCode = new CommandLine(new jdbc()).execute(args);
@@ -67,9 +70,16 @@ class jdbc implements Callable<Integer> {
         }
         command.add("--deps");
         command.add(String.join(",",driverDependency));
-        command.add("sqlline:sqlline:RELEASE");
-        command.add("-u");
-        command.add(jdbcurl);
+        if(web) {
+            command.add("h2@jbanghub/h2");
+            command.add("-url");
+            command.add(jdbcurl);
+        } else {
+            command.add("sqlline:sqlline:RELEASE");
+            command.add("-u");
+            command.add(jdbcurl);
+        }
+        
 
         if (!additionalArgs.isEmpty()) {
             command.addAll(additionalArgs);
