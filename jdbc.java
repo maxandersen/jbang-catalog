@@ -91,13 +91,14 @@ class jdbc implements Callable<Integer> {
         } else {
             command.add("sqlline:sqlline:RELEASE");
             if(user != null) {
-                command.add("-u");
+                command.add("-n");
                 command.add(user);
             }
             if(password != null) {
                 command.add("-p");
                 command.add(password);
             }
+            command.add("-u");
             command.add(jdbcurl);
         }
         
