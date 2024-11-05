@@ -34,6 +34,12 @@ class jdbc implements Callable<Integer> {
     @Option(names = "-w", description = "Launch h2 web console instead of sqlline")
     boolean web;
 
+    @Option(names = { "-u", "--user" }, description = "User to connect to database")
+    String user;
+
+    @Option(names = { "-p", "--password" }, description = "Password to connect to database")
+    String password;
+
     public static void main(String... args) {
         int exitCode = new CommandLine(new jdbc()).execute(args);
         System.exit(exitCode);
@@ -74,10 +80,26 @@ class jdbc implements Callable<Integer> {
             command.add("h2@jbanghub/h2");
             command.add("-url");
             command.add(jdbcurl);
+            if(user != null) {
+                command.add("-user");
+                command.add(user);
+            }
+            if(password != null) {
+                command.add("-password");
+                command.add(password);
+            }
         } else {
             command.add("sqlline:sqlline:RELEASE");
             command.add("-u");
             command.add(jdbcurl);
+            if(user != null) {
+                command.add("-u");
+                command.add(user);
+            }
+            if(password != null) {
+                command.add("-p");
+                command.add(password);
+            }
         }
         
 
