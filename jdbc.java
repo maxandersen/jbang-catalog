@@ -78,8 +78,6 @@ class jdbc implements Callable<Integer> {
         command.add(String.join(",",driverDependency));
         if(web) {
             command.add("h2@jbanghub/h2");
-            command.add("-url");
-            command.add(jdbcurl);
             if(user != null) {
                 command.add("-user");
                 command.add(user);
@@ -88,10 +86,10 @@ class jdbc implements Callable<Integer> {
                 command.add("-password");
                 command.add(password);
             }
+            command.add("-url");
+            command.add(jdbcurl);
         } else {
             command.add("sqlline:sqlline:RELEASE");
-            command.add("-u");
-            command.add(jdbcurl);
             if(user != null) {
                 command.add("-u");
                 command.add(user);
@@ -100,6 +98,7 @@ class jdbc implements Callable<Integer> {
                 command.add("-p");
                 command.add(password);
             }
+            command.add(jdbcurl);
         }
         
 
