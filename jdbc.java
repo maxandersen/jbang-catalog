@@ -1,7 +1,8 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //DEPS info.picocli:picocli:4.6.3
 //DESC This script launches sqlline or h2 console by just specifying jdbc url.
-//DESC `jdbc` will use jbang to download the required driver and launch sqlline or h2 console.
+//DESC `jdbc` will use jbang to download the required driver and launch 
+//DESC sqlline (cli) or h2 console (web) or jdbcnav (desktop).
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -33,10 +34,10 @@ class jdbc implements Callable<Integer> {
     List<String> additionalArgs = List.of();
 
     static class LaunchType {
-        @Option(names = "-w", description = "Launch h2 web console instead of sqlline")
+        @Option(names = { "-w", "--web"}, description = "Launch h2 web console")
         boolean web;
 
-        @Option(names = "-d", description = "Launch jdbcnav desktop app")
+        @Option(names = { "-d", "--desktop"}, description = "Launch jdbcnav desktop app")
         boolean desktop;
     }
 

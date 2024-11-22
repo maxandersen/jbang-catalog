@@ -86,7 +86,6 @@
     },
     "jdbc": {
       "script-ref": "jdbc.java",
-      "enable-preview": false,
       "java-agents": []
     },
     "quarkus-edit": {
