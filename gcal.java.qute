@@ -3,7 +3,7 @@
 //DEPS info.picocli:picocli:4.5.0
 //DEPS com.google.api-client:google-api-client:1.23.0
 //DEPS com.google.oauth-client:google-oauth-client-jetty:1.23.0
-//DEPS com.google.apis:google-api-services-calendar:v3-rev305-1.23.0
+//DEPS com.google.apis:google-api-services-calendar:v3-rev20241101-2.0.0
 
 import java.io.File;
 import java.io.FileInputStream;
