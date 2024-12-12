@@ -86,7 +86,7 @@ class jdbc implements Callable<Integer> {
         }
         command.add("--deps");
         command.add(String.join(",",driverDependency));
-        if(launchType.web) {
+        if(launchType != null && launchType.web) {
             command.add("h2@jbanghub/h2");
             if(user != null) {
                 command.add("-user");
@@ -98,7 +98,7 @@ class jdbc implements Callable<Integer> {
             }
             command.add("-url");
             command.add(jdbcurl);
-        } else if(launchType.desktop) {
+        } else if(launchType != null && launchType.desktop) {
             command.add("https://thomasokken.com/jdbcnav/download/jdbcnav.jar");
             if(user != null) {
                 command.add("-user=%s".formatted(user));
