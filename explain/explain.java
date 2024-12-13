@@ -2,7 +2,7 @@
 //JAVA 11+
 // Update the Quarkus version to what you want here or run jbang with
 // `-Dquarkus.version=<version>` to override it.
-//DEPS io.quarkus:quarkus-bom:${quarkus.version:3.0.0.CR1}@pom
+//DEPS io.quarkus:quarkus-bom:${quarkus.version:3.17.4}@pom
 //DEPS io.quarkus:quarkus-picocli
 //DEPS io.quarkus:quarkus-rest-client-reactive-jackson
 //Q:CONFIG quarkus.banner.enabled=false

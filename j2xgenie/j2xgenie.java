@@ -2,7 +2,7 @@
 //JAVA 17+
 // Update the Quarkus version to what you want here or run jbang with
 // `-Dquarkus.version=<version>` to override it.
-//DEPS io.quarkus:quarkus-bom:${quarkus.version:3.15.1}@pom
+//DEPS io.quarkus:quarkus-bom:${quarkus.version:3.17.4}@pom
 //DEPS io.quarkiverse.langchain4j:quarkus-langchain4j-openai:0.19.0.CR3
 //DEPS io.quarkus:quarkus-picocli
 //Q:CONFIG quarkus.banner.enabled=false
