@@ -2,7 +2,7 @@
 //JAVA 17+
 //DESCRIPTION Calculate the speed of a Large Language Model using OpenAI model. The speed is measured in tokens per second based on the models own reported data.
 //DEPS com.fasterxml.jackson.core:jackson-databind:2.12.3
-//DEPS info.picocli:picocli:4.6.1
+//DEPS info.picocli:picocli:4.7.6
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
