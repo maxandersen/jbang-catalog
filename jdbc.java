@@ -42,7 +42,7 @@ class jdbc implements Callable<Integer> {
     }
 
     @ArgGroup(exclusive = true)
-    LaunchType launchType;
+    LaunchType launchType = new LaunchType();
 
     @Option(names = { "-u", "--user" }, description = "User to connect to database")
     String user;
