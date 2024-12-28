@@ -11,6 +11,10 @@ import java.util.Base64;
 import java.util.concurrent.Callable;
 import java.nio.charset.StandardCharsets;
 
+// port of https://iterm2.com/utilities/imgcat?ref=blog.la-terminal.net
+// referenced from https://iterm2.com/documentation-images.html
+// Because...why not?
+
 @CommandLine.Command(name = "imgcat", mixinStandardHelpOptions = true, description = "Display images inline in the terminal.")
 public class imgcat implements Callable<Integer> {
 

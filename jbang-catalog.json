@@ -61,7 +61,6 @@
     },
     "quack": {
       "script-ref": "quack.jsh",
-      "enable-preview": false,
       "java-agents": []
     },
     "gython": {
@@ -76,12 +75,10 @@
       ],
       "java": "21",
       "main": "com.oracle.graal.python.shell.GraalPythonMain",
-      "enable-preview": false,
       "java-agents": []
     },
     "qrcode": {
       "script-ref": "qrcode.java",
-      "enable-preview": false,
       "java-agents": []
     },
     "jdbc": {
@@ -90,7 +87,6 @@
     },
     "quarkus-edit": {
       "script-ref": "QuarkusEdit.java",
-      "enable-preview": false,
       "java-agents": []
     },
     "hass-qli-early-access": {
@@ -117,6 +113,10 @@
     },
     "imgcat": {
       "script-ref": "imgcat/imgcat.java",
+      "java-agents": []
+    },
+    "hibernatetools": {
+      "script-ref": "hibernatetools/hibernatetools.java",
       "java-agents": []
     }
   },
