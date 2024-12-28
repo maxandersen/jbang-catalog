@@ -49,7 +49,7 @@ description = """
         --schema public \\
         --table-exclude "payment_p.*" \\
         --table-exclude "nicer.*" \\
-        --table-exclude "sales_by.*"
+        --table-exclude "sales_by.*" \\
         --output src/main/java
     """)
 public class hibernatetools implements Runnable {
