@@ -7,7 +7,7 @@
 import io.quarkiverse.mcp.server.Tool;
 import io.quarkiverse.mcp.server.ToolArg;
 
-public class mpccalculator {
+public class mcpcalculator {
 
     @Tool(description = "Performs basic arithmetic operations (add, subtract, multiply, divide)")
     String operation(@ToolArg(description = "The operation to perform - add, subtract, multiply, divide") String operation, 

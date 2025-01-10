@@ -118,6 +118,10 @@
     "hibernatetools": {
       "script-ref": "hibernatetools/hibernatetools.java",
       "java-agents": []
+    },
+    "mcpcalculator": {
+      "script-ref": "mcpcalc/mcpcalculator.java",
+      "java-agents": []
     }
   },
   "templates": {
