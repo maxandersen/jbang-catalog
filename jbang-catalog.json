@@ -122,6 +122,10 @@
     "mcpcalculator": {
       "script-ref": "mcpcalc/mcpcalculator.java",
       "java-agents": []
+    },
+    "tinypng": {
+      "script-ref": "tinypng-cli/tinypng.java",
+      "java-agents": []
     }
   },
   "templates": {
