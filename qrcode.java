@@ -3,7 +3,7 @@ package qrcode;
 //JAVA 11+
 //DEPS com.google.zxing:core:3.4.0
 //DEPS com.google.zxing:javase:3.4.0
-//DEPS info.picocli:picocli:4.5.0
+//DEPS info.picocli:picocli:4.7.6
 //DEPS info.picocli:picocli-codegen:4.5.0
 //DEPS org.apache.xmlgraphics:batik-transcoder:1.17
 //DEPS com.twelvemonkeys.imageio:imageio-batik:3.9.4
