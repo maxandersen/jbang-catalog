@@ -6,9 +6,11 @@
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.Callable;
 
 import picocli.CommandLine;
@@ -50,6 +52,9 @@ class jdbc implements Callable<Integer> {
     @Option(names = { "-p", "--password" }, description = "Password to connect to database")
     String password;
 
+    @Option(names = { "--dg", "--driver-gav" }, description = "List of GAV Driver to use", converter = HeaderConverter.class)
+    List<String> driverGAV = new ArrayList<>();
+
     public static void main(String... args) {
         int exitCode = new CommandLine(new jdbc()).execute(args);
         System.exit(exitCode);
@@ -70,12 +75,11 @@ class jdbc implements Callable<Integer> {
 
         Map<String, List<String>> drivers = setupDrivers();
 
-        driverDependency = drivers.get(scheme);
+        driverDependency = driverGAV.isEmpty() ? drivers.get(scheme) : driverGAV;
         if (driverDependency == null) {
             throw new IllegalArgumentException("Unsupported database type: " + scheme);
         }
 
-    
         List<String> command = new ArrayList<>();
 
         String os = System.getProperty("os.name").toLowerCase();
@@ -198,5 +202,14 @@ class jdbc implements Callable<Integer> {
         drivers.put("derby", "org.apache.derby.jdbc.EmbeddedDriver");
         drivers.put("sqlite", "org.sqlite.JDBC");
         return drivers;
+    }
+
+    static public class HeaderConverter implements CommandLine.ITypeConverter<List<String>> {
+       
+        @Override
+        public List<String> convert(String s) throws Exception {
+            var params = s.split(",");
+            return Arrays.asList(params);
+        }
     }
 }
