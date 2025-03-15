@@ -3,6 +3,7 @@
 //DESC This script launches sqlline or h2 console by just specifying jdbc url.
 //DESC `jdbc` will use jbang to download the required driver and launch 
 //DESC sqlline (cli) or h2 console (web) or jdbcnav (desktop).
+//JAVA 11+ 
 
 import java.net.URI;
 import java.util.ArrayList;
