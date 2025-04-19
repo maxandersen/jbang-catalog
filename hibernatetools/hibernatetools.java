@@ -1,6 +1,6 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //DEPS org.hibernate.tool:hibernate-tools-orm:7.0.0.Beta1
-//DEPS info.picocli:picocli:4.7.6
+//DEPS info.picocli:picocli:4.7.7
 ////DEPS org.postgresql:postgresql:42.6.0
 //JAVA 17+
 

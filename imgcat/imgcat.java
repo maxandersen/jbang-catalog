@@ -1,4 +1,4 @@
-//DEPS info.picocli:picocli:4.7.0
+//DEPS info.picocli:picocli:4.7.7
 
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
