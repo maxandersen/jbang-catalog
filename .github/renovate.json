@@ -1,11 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": "\\.java",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/\\.java/"
+      ],
       "matchStrings": [
         "//DEPS (?<depName>.+):(\\${.+:(?<currentValue>[^ }]+)})",
         "//DEPS ((?<depName>.+:.+):(?<currentValue>[^$].+))(\\@\\w+)?"
@@ -13,7 +16,10 @@
       "datasourceTemplate": "maven"
     },
     {
-      "fileMatch": "jbang-catalog.json",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/jbang-catalog.json/"
+      ],
       "matchStrings": [
         "\"(?<depName>.+):(\\${.+:(?<currentValue>[^ }]+)})\""
       ],
