@@ -2,7 +2,7 @@ package qrcode;
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //JAVA 11+
 //DEPS com.google.zxing:core:3.4.0
-//DEPS com.google.zxing:javase:3.4.0
+//DEPS com.google.zxing:javase:3.5.3
 //DEPS info.picocli:picocli:4.5.0
 //DEPS info.picocli:picocli-codegen:4.5.0
 //DEPS org.apache.xmlgraphics:batik-transcoder:1.17
