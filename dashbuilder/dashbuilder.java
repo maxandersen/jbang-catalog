@@ -1,6 +1,6 @@
 
 //DEPS org.testcontainers:testcontainers:1.15.3
-//DEPS org.slf4j:slf4j-simple:1.7.25
+//DEPS org.slf4j:slf4j-simple:1.7.36
 //FILES Dockerfile
 
 import java.nio.file.Paths;
