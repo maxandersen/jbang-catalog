@@ -147,6 +147,12 @@
       "file-refs": {
         "{basename}.java": "dashbuilder/dashboard.java.qute"
       }
+    },
+    "setup-jitpack": {
+      "file-refs": {
+        "jitpack.yml": "jitpack/jitpack.yml.qute"
+      },
+      "description": "Setup Jitpack for a java/mvn based project"
     }
   }
 }
