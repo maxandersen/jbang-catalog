@@ -126,6 +126,10 @@
     "tinypng": {
       "script-ref": "tinypng-cli/tinypng.java",
       "java-agents": []
+    },
+    "jupyter-jbang": {
+      "script-ref": "jjbang.java",
+      "java-agents": []
     }
   },
   "templates": {
