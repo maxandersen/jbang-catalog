@@ -77,6 +77,10 @@
       "main": "com.oracle.graal.python.shell.GraalPythonMain",
       "java-agents": []
     },
+    "lazyslide": {
+      "script-ref": "lazyslide@maxandersen/lazyslide",
+      "description": "lazyslide: render, serve, watch, and initialize AsciiDoc reveal.js decks"
+    },
     "qrcode": {
       "script-ref": "qrcode.java",
       "java-agents": []
