@@ -3,7 +3,7 @@
 //DEPS de.vandermeer:asciitable:0.3.2
 //DEPS org.jline:jline:3.16.0
 //DEPS org.zeroturnaround:zt-exec:1.11
-//DEPS org.slf4j:slf4j-nop:1.7.30
+//DEPS org.slf4j:slf4j-nop:1.7.36
 //DEPS net.steppschuh.markdowngenerator:markdowngenerator:1.3.2
 
 import de.vandermeer.asciitable.AsciiTable;
