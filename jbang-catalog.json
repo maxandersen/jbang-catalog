@@ -136,7 +136,7 @@
       "java-agents": []
     },
     "jhostty": {
-      "script-ref": "jhostty@maxandersen",
+      "script-ref": "jhostty@maxandersen/jhostty",
       "description": "Terminal emulator using GhosttyFX"
     }
   },
