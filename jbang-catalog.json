@@ -138,6 +138,10 @@
     "jhostty": {
       "script-ref": "jhostty@maxandersen/jhostty",
       "description": "Terminal emulator using GhosttyFX"
+    },
+    "jfrdoc": {
+      "script-ref": "https://github.com/maxandersen/jfrdoc/blob/main/jfrdoc.java",
+      "description": "Generate JFR event documentation (HTML/JSON/text)"
     }
   },
   "templates": {
