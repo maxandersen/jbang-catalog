@@ -1,4 +1,4 @@
-//DEPS org.dashbuilder:dashbuilder-dsl:7.53.0.Final
+//DEPS org.dashbuilder:dashbuilder-dsl:7.74.1.Final
 //DEPS org.slf4j:slf4j-simple:1.7.25
 
 import org.dashbuilder.dataset.ColumnType;
