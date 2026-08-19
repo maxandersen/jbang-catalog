@@ -1,5 +1,5 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS info.picocli:picocli:4.6.3
+//DEPS info.picocli:picocli:4.7.7
 //DESC This script launches sqlline or h2 console by just specifying jdbc url.
 //DESC `jdbc` will use jbang to download the required driver and launch 
 //DESC sqlline (cli) or h2 console (web) or jdbcnav (desktop).
