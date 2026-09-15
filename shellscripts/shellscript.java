@@ -1,6 +1,6 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //DEPS org.zeroturnaround:zt-exec:1.12
-//DEPS org.slf4j:slf4j-simple:1.7.30
+//DEPS org.slf4j:slf4j-simple:1.7.36
 //JAVA 11+
 //FILES demo.sh
 //DESCRIPTION Simple example of how to wrap and run a shellscript using jbang catalogs.
